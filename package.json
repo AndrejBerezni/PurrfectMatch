@@ -41,9 +41,24 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "framer-motion": "^10.16.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "lodash": "^4.17.21",
     "prettier": "^3.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "lint-staged": {
+    "src/**/*.{js, jsx,ts,tsx,json}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{js, jsx,ts,tsx,json, css, scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
