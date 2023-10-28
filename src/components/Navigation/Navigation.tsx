@@ -1,10 +1,4 @@
-import {
-  Container,
-  Nav,
-  Navbar,
-  Tooltip,
-  OverlayTrigger,
-} from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import {
   BoxArrowRight,
   MoonFill,

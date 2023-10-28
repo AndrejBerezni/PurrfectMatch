@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 interface INavItemProps {
   icon: ReactNode
-  linkTo: string
+  linkTo?: string
   linkText: string
   isLink: boolean
 }
