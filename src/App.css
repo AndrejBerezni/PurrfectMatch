@@ -1,7 +1,7 @@
 :root {
   --text-color: #130e01;
   --bg-color: #f2f7f5;
-  --nav-bg: #f2f7f58e;
+  --nav-bg: #f2f7f533;
   --primary: #00473e;
   --secondary: #475c5a;
   --accent: #faad29;
@@ -13,7 +13,7 @@
 :root.dark {
   --text-color: #fef9ec;
   --bg-color: #080d0b;
-  --nav-bg: #080d0b62;
+  --nav-bg: #080d0b33;
   --primary: #b8fff5;
   --secondary: #a3b8b6;
   --accent: #d68905;
@@ -31,6 +31,7 @@
   padding: 0;
   text-align: center;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 body {
@@ -42,6 +43,17 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--text-color);
+}
+
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+.h4:hover,
+h5:hover,
+h6:hover,
+p:hover {
+  cursor: default;
 }
 
 @media (max-width: 992px) {

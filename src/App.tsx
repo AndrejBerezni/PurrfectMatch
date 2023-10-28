@@ -1,16 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { useEffect } from 'react'
-
 import { useSelector } from 'react-redux'
 import { Routes, Route, Navigate } from 'react-router-dom'
-
+import SignInForm from './components/Forms/SignInForm/SignInForm.tsx'
 import Navigation from './components/Navigation/Navigation.tsx'
 import Favorites from './pages/Favorites/Favorites.tsx'
 import Home from './pages/Home/Home.tsx'
 import PetSearch from './pages/PetSearch/PetSearch.tsx'
-import { getDarkMode } from './store/darkMode/selectors.ts'
 import { getAuthStatus } from './store/authentication/selectors.ts'
+import { getDarkMode } from './store/darkMode/selectors.ts'
 
 function App() {
   const isDarkMode = useSelector(getDarkMode)
@@ -37,6 +36,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <SignInForm />
     </>
   )
 }

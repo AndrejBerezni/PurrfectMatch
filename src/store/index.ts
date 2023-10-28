@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-
 import authReducer from './authentication/index.ts'
 import darkModeReducer from './darkMode/index.ts'
 

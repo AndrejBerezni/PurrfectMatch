@@ -1,5 +1,4 @@
 import { get } from 'lodash'
-
 import { RootState } from '..'
 
 export const getAuthStatus = (store: RootState) =>
@@ -7,3 +6,9 @@ export const getAuthStatus = (store: RootState) =>
 
 export const getUser = (store: RootState) =>
   get(store, 'authentication.user', false)
+
+export const getShowSignIn = (store: RootState) =>
+  get(store, 'authentication.showSignIn', false)
+
+export const getShowSignUp = (store: RootState) =>
+  get(store, 'authentication.showSignUp', false)

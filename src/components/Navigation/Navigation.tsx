@@ -8,15 +8,14 @@ import {
   HouseHeartFill,
   PersonFill,
 } from 'react-bootstrap-icons'
-import { NavLink } from 'react-router-dom'
-
-import './navigation.css'
-import { switchDarkMode } from '../../store/darkMode'
-import NavItem from '../NavItem/NavItem'
-
 import { useDispatch, useSelector } from 'react-redux'
-import { getDarkMode } from '../../store/darkMode/selectors'
+import { NavLink } from 'react-router-dom'
+import './navigation.css'
+import { showSignIn } from '../../store/authentication'
 import { getAuthStatus } from '../../store/authentication/selectors'
+import { switchDarkMode } from '../../store/darkMode'
+import { getDarkMode } from '../../store/darkMode/selectors'
+import NavItem from '../NavItem/NavItem'
 
 export default function Navigation() {
   const dispatch = useDispatch()
@@ -49,6 +48,9 @@ export default function Navigation() {
                 icon={<PersonFill />}
                 linkText="Sign In"
                 isLink={false}
+                handleClick={() => {
+                  dispatch(showSignIn())
+                }}
               />
             )}
             {isAuth && (
