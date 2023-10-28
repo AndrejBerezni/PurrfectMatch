@@ -2,15 +2,27 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 import {
   BoxArrowRight,
   MoonFill,
+  SunFill,
   SearchHeartFill,
   BookmarkHeartFill,
   HouseHeartFill,
 } from 'react-bootstrap-icons'
 import { NavLink } from 'react-router-dom'
+
 import './navigation.css'
+import { switchDarkMode } from '../../store/darkMode'
 import NavItem from '../NavItem/NavItem'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { getDarkMode } from '../../store/darkMode/selectors'
+
 export default function Navigation() {
+  const dispatch = useDispatch()
+  const isDarkMode = useSelector(getDarkMode)
+
+  const handleDarkMode = () => {
+    dispatch(switchDarkMode())
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary" id="navbar">
       <Container
@@ -41,7 +53,12 @@ export default function Navigation() {
               linkText="Favorites"
               isLink={true}
             />
-            <NavItem icon={<MoonFill />} linkText="Dark Mode" isLink={false} />
+            <NavItem
+              icon={isDarkMode ? <SunFill /> : <MoonFill />}
+              linkText="Dark Mode"
+              isLink={false}
+              handleClick={handleDarkMode}
+            />
             <NavItem
               icon={<BoxArrowRight />}
               linkText="Sign Out"

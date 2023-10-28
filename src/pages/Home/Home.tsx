@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import getRandomFact from '../../api/getRandomFact'
 
 export default function Home() {

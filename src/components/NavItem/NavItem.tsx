@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+
 import { Nav, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -7,6 +8,7 @@ interface INavItemProps {
   linkTo?: string
   linkText: string
   isLink: boolean
+  handleClick?: () => void
 }
 
 export default function NavItem({
@@ -14,6 +16,7 @@ export default function NavItem({
   linkTo,
   linkText,
   isLink,
+  handleClick,
 }: Readonly<INavItemProps>) {
   return (
     <OverlayTrigger
@@ -24,6 +27,7 @@ export default function NavItem({
         as={isLink ? NavLink : Nav.Item}
         to={isLink ? linkTo : null}
         className="mx-3 my-1"
+        onClick={handleClick}
       >
         <p className="nav-item-text">{linkText}</p>
         {icon}
