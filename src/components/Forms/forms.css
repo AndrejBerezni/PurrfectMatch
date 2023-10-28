@@ -4,6 +4,10 @@
   top: 5px;
 }
 
+:root.dark .auth-close-btn {
+  filter: invert(100%);
+}
+
 #google-icon {
   max-height: 20px;
   aspect-ratio: 1/1;

@@ -9,9 +9,10 @@ import {
   PersonFill,
 } from 'react-bootstrap-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './navigation.css'
-import { showSignIn } from '../../store/authentication'
+import { signOutUser } from '../../firebase/firebase-config'
+import { showSignIn, signOut } from '../../store/authentication'
 import { getAuthStatus } from '../../store/authentication/selectors'
 import { switchDarkMode } from '../../store/darkMode'
 import { getDarkMode } from '../../store/darkMode/selectors'
@@ -19,11 +20,18 @@ import NavItem from '../NavItem/NavItem'
 
 export default function Navigation() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const isDarkMode = useSelector(getDarkMode)
   const isAuth = useSelector(getAuthStatus)
 
   const handleDarkMode = () => {
     dispatch(switchDarkMode())
+  }
+
+  const handleSignOut = () => {
+    signOutUser()
+    dispatch(signOut())
+    navigate('/')
   }
   return (
     <Navbar sticky="top" expand="lg" className="bg-body-tertiary" id="navbar">
@@ -80,6 +88,7 @@ export default function Navigation() {
                 icon={<BoxArrowRight />}
                 linkText="Sign Out"
                 isLink={false}
+                handleClick={handleSignOut}
               />
             )}
           </Nav>

@@ -10,7 +10,7 @@ interface IAuthState {
 const initialState: IAuthState = {
   isAuth: false,
   user: '',
-  showSignIn: true,
+  showSignIn: false,
   showSignUp: false,
 }
 
