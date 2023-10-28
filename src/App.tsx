@@ -3,16 +3,18 @@ import './App.css'
 import { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Navigation from './components/Navigation/Navigation.tsx'
 import Favorites from './pages/Favorites/Favorites.tsx'
 import Home from './pages/Home/Home.tsx'
 import PetSearch from './pages/PetSearch/PetSearch.tsx'
 import { getDarkMode } from './store/darkMode/selectors.ts'
+import { getAuthStatus } from './store/authentication/selectors.ts'
 
 function App() {
   const isDarkMode = useSelector(getDarkMode)
+  const isAuth = useSelector(getAuthStatus)
 
   useEffect(() => {
     isDarkMode
@@ -25,8 +27,15 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<PetSearch />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/search"
+          element={isAuth ? <PetSearch /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/favorites"
+          element={isAuth ? <Favorites /> : <Navigate to="/" />}
+        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   )

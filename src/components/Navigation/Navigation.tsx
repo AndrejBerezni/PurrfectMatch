@@ -6,6 +6,7 @@ import {
   SearchHeartFill,
   BookmarkHeartFill,
   HouseHeartFill,
+  PersonFill,
 } from 'react-bootstrap-icons'
 import { NavLink } from 'react-router-dom'
 
@@ -15,10 +16,12 @@ import NavItem from '../NavItem/NavItem'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getDarkMode } from '../../store/darkMode/selectors'
+import { getAuthStatus } from '../../store/authentication/selectors'
 
 export default function Navigation() {
   const dispatch = useDispatch()
   const isDarkMode = useSelector(getDarkMode)
+  const isAuth = useSelector(getAuthStatus)
 
   const handleDarkMode = () => {
     dispatch(switchDarkMode())
@@ -41,29 +44,42 @@ export default function Navigation() {
               linkText="Home"
               isLink={true}
             />
-            <NavItem
-              icon={<SearchHeartFill />}
-              linkTo="/search"
-              linkText="Search"
-              isLink={true}
-            />
-            <NavItem
-              icon={<BookmarkHeartFill />}
-              linkTo="/favorites"
-              linkText="Favorites"
-              isLink={true}
-            />
+            {!isAuth && (
+              <NavItem
+                icon={<PersonFill />}
+                linkText="Sign In"
+                isLink={false}
+              />
+            )}
+            {isAuth && (
+              <>
+                <NavItem
+                  icon={<SearchHeartFill />}
+                  linkTo="/search"
+                  linkText="Search"
+                  isLink={true}
+                />
+                <NavItem
+                  icon={<BookmarkHeartFill />}
+                  linkTo="/favorites"
+                  linkText="Favorites"
+                  isLink={true}
+                />
+              </>
+            )}
             <NavItem
               icon={isDarkMode ? <SunFill /> : <MoonFill />}
               linkText="Dark Mode"
               isLink={false}
               handleClick={handleDarkMode}
             />
-            <NavItem
-              icon={<BoxArrowRight />}
-              linkText="Sign Out"
-              isLink={false}
-            />
+            {isAuth && (
+              <NavItem
+                icon={<BoxArrowRight />}
+                linkText="Sign Out"
+                isLink={false}
+              />
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
