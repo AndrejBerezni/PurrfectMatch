@@ -1,4 +1,10 @@
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import {
+  Container,
+  Nav,
+  Navbar,
+  Tooltip,
+  OverlayTrigger,
+} from 'react-bootstrap'
 import {
   BoxArrowRight,
   MoonFill,
@@ -8,6 +14,7 @@ import {
 } from 'react-bootstrap-icons'
 import { NavLink } from 'react-router-dom'
 import './navigation.css'
+import NavItem from '../NavItem/NavItem'
 
 export default function Navigation() {
   return (
@@ -22,26 +29,30 @@ export default function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="nav-links">
-            <Nav.Item as={NavLink} to="/" className="mx-3 my-1">
-              <p className="nav-item-text">Home</p>
-              <HouseHeartFill />
-            </Nav.Item>
-            <Nav.Item as={NavLink} to="/search" className="mx-3 my-1">
-              <p className="nav-item-text">Search</p>
-              <SearchHeartFill />
-            </Nav.Item>
-            <Nav.Item as={NavLink} to="/favorites" className="mx-3 my-1">
-              <p className="nav-item-text">Favorites</p>
-              <BookmarkHeartFill />
-            </Nav.Item>
-            <Nav.Item className="mx-3 my-1">
-              <p className="nav-item-text">Dark Mode</p>
-              <MoonFill />
-            </Nav.Item>
-            <Nav.Item className="mx-3 my-1">
-              <p className="nav-item-text">Sign Out</p>
-              <BoxArrowRight />
-            </Nav.Item>
+            <NavItem
+              icon={<HouseHeartFill />}
+              linkTo="/"
+              linkText="Home"
+              isLink={true}
+            />
+            <NavItem
+              icon={<SearchHeartFill />}
+              linkTo="/search"
+              linkText="Search"
+              isLink={true}
+            />
+            <NavItem
+              icon={<BookmarkHeartFill />}
+              linkTo="/favorites"
+              linkText="Favorites"
+              isLink={true}
+            />
+            <NavItem icon={<MoonFill />} linkText="Dark Mode" isLink={false} />
+            <NavItem
+              icon={<BoxArrowRight />}
+              linkText="Sign Out"
+              isLink={false}
+            />
           </Nav>
         </Navbar.Collapse>
       </Container>

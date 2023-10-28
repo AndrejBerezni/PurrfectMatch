@@ -48,6 +48,9 @@
   border: 2px solid var(--accent);
 }
 
+.navbar-tooltip:nth-child(1) {
+  color: var(--accent) !important;
+}
 @media (max-width: 992px) {
   .navbar-collapse {
     justify-content: center;
@@ -62,5 +65,8 @@
   }
   .nav-item:hover {
     transform: scale(1.1);
+  }
+  .navbar-tooltip {
+    display: none;
   }
 }
