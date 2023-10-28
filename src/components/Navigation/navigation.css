@@ -1,0 +1,45 @@
+#navbar {
+  background-color: var(--accent) !important;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-item,
+.navbar-brand {
+  color: var(--bg-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-item-text {
+  display: none;
+}
+
+.navbar-toggler-icon {
+  filter: invert(100%);
+}
+
+.navbar-toggler {
+  border: 2px solid var(--bg-color);
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    justify-content: center;
+  }
+  .nav-item-text {
+    display: inline;
+    padding: 0;
+    margin: 0 10px 0 0;
+  }
+}
