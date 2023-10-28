@@ -1,5 +1,5 @@
 #navbar {
-  background-color: var(--secondary) !important;
+  background-color: var(--nav-bg) !important;
 }
 
 .navbar-collapse {
@@ -9,14 +9,10 @@
 
 .nav-item,
 .navbar-brand {
-  color: var(--bg-color);
+  color: var(--text-color);
   text-decoration: none;
   font-family: var(--head-font);
   font-size: large;
-}
-
-.navbar-brand {
-  text-shadow: 2px 2px 2px var(--text-color);
 }
 
 .nav-item {
@@ -24,14 +20,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  filter: drop-shadow(1px 1px 3px var(--text-color));
   font-size: x-large;
 }
 
-:root.dark .nav-item,
-:root.dark .navbar-brand {
+:root.dark .nav-item {
   filter: none;
-  text-shadow: none;
 }
 
 .nav-item:hover,
@@ -39,7 +32,6 @@
   cursor: pointer;
   color: var(--accent);
   transition: 0.3s;
-  text-shadow: 2px 2px 2px var(--primary);
 }
 
 .nav-item:hover {
@@ -50,12 +42,12 @@
   display: none;
 }
 
-.navbar-toggler-icon {
+:root.dark .navbar-toggler-icon {
   filter: invert(100%);
 }
 
 .navbar-toggler {
-  border: 2px solid var(--bg-color);
+  border: 2px solid var(--text-color);
 }
 
 .navbar-toggler:hover {
@@ -77,6 +69,7 @@
     display: inline;
     padding: 0;
     margin: 0 10px 0 0;
+    text-shadow: 1px 1px 2px var(--secondary);
   }
   .nav-item-text:hover {
     cursor: pointer;

@@ -27,7 +27,7 @@ export default function Navigation() {
     dispatch(switchDarkMode())
   }
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" id="navbar">
+    <Navbar sticky="top" expand="lg" className="bg-body-tertiary" id="navbar">
       <Container
         id="navbar-container"
         className="d-flex justify-content-between"

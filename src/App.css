@@ -1,9 +1,11 @@
 :root {
   --text-color: #130e01;
   --bg-color: #f2f7f5;
+  --nav-bg: #f2f7f58e;
   --primary: #00473e;
   --secondary: #475c5a;
   --accent: #faad29;
+  --bg-image: url('./assets/background-light.png');
   --text-font: 'Nunito', sans-serif;
   --head-font: 'Pacifico', cursive;
 }
@@ -11,9 +13,11 @@
 :root.dark {
   --text-color: #fef9ec;
   --bg-color: #080d0b;
+  --nav-bg: #080d0b62;
   --primary: #b8fff5;
   --secondary: #a3b8b6;
   --accent: #d68905;
+  --bg-image: url('./assets/background-dark.png');
 }
 
 * {
@@ -21,12 +25,31 @@
 }
 
 #root {
-  margin: 0 auto;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
   text-align: center;
+  overflow-y: scroll;
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
-  background-color: var(--bg-color);
+  background: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--text-color);
+}
+
+@media (max-width: 992px) {
+  body {
+    background-position: right;
+  }
+
+  :root.dark body {
+    background-position: center;
+  }
 }
