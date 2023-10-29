@@ -12,13 +12,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../../assets/paw.png'
 import { signUpWithEmail } from '../../../firebase/firebase-config'
+import formatFirebaseError from '../../../firebase/formatFirebaseError'
+import { showAlert, hideAlert } from '../../../store/alert'
+import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
 import { signIn, hideForms } from '../../../store/authentication'
 import { getShowSignUp } from '../../../store/authentication/selectors'
 import '../forms.css'
 import AuthAlert from '../../AuthAlert/AuthAlert'
-import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
-import { showAlert, hideAlert } from '../../../store/alert'
-import formatFirebaseError from '../../../firebase/formatFirebaseError'
 
 function SignUpForm() {
   const dispatch = useDispatch()

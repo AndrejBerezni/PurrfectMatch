@@ -12,11 +12,21 @@ export default function CharacterBar({
   level,
 }: Readonly<ICharacterBarProps>) {
   return (
-    <ProgressBar
-      now={level * 20}
-      label={name}
-      variant={levelColor[level - 1]}
-      className="mb-1"
-    />
+    <>
+      <p
+        style={{
+          fontSize: 'small',
+          margin: 0,
+          color: 'var(--secondary)',
+        }}
+      >
+        {name}
+      </p>
+      <ProgressBar
+        now={level * 20}
+        variant={levelColor[level - 1]}
+        className="mb-1"
+      />
+    </>
   )
 }

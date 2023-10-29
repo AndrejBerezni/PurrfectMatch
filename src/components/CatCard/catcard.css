@@ -9,9 +9,15 @@
   text-align: start;
 }
 
-.cat-card-container h3 {
+.cat-card-name {
   font-family: var(--head-font);
+  text-shadow: 1px 1px 2px var(--bg-color);
   color: var(--primary);
+}
+
+.cat-card-props {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .cat-card-image {
@@ -27,4 +33,17 @@
 
 .cat-card-prop-name {
   color: var(--secondary);
+}
+
+.cat-card-description {
+  color: var(--text-color);
+  text-align: justify;
+  font-weight: 600;
+}
+
+.special-trait-badge {
+  background-color: var(--accent) !important;
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-style: italic;
 }

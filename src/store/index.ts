@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
+import alertReducer from './alert/index.ts'
 import authReducer from './authentication/index.ts'
 import darkModeReducer from './darkMode/index.ts'
-import alertReducer from './alert/index.ts'
 
 export const store = configureStore({
   reducer: {

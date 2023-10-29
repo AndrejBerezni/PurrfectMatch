@@ -16,13 +16,13 @@ import {
   signInWithGoogle,
   signInWithEmail,
 } from '../../../firebase/firebase-config'
+import formatFirebaseError from '../../../firebase/formatFirebaseError'
+import { showAlert, hideAlert } from '../../../store/alert'
+import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
 import { signIn, hideForms, showSignUp } from '../../../store/authentication'
 import { getShowSignIn } from '../../../store/authentication/selectors'
 import '../forms.css'
 import AuthAlert from '../../AuthAlert/AuthAlert'
-import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
-import { showAlert, hideAlert } from '../../../store/alert'
-import formatFirebaseError from '../../../firebase/formatFirebaseError'
 
 export default function SignInForm() {
   const dispatch = useDispatch()

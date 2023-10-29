@@ -1,6 +1,6 @@
-import { ICat } from '../../compiler/interfaces'
-import { catCharacteristics } from '../../data/catCharacteristics'
-import CharacterBar from '../CharacterBar/CharacterBar'
+import CharacterBar from './CharacterBar/CharacterBar'
+import { ICat } from '../../../compiler/interfaces'
+import { catCharacteristics } from '../../../data/catCharacteristics'
 
 interface ICharacterSectionProps {
   cat: ICat
@@ -15,7 +15,7 @@ export default function CharacterSection({
         <CharacterBar
           name={catCharacteristics[key as keyof typeof catCharacteristics]}
           level={Number(cat[key as keyof ICat])}
-          key={key}
+          key={`${key}-${cat.id}`}
         />
       ))}
     </>
