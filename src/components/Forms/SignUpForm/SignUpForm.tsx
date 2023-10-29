@@ -15,11 +15,16 @@ import { signUpWithEmail } from '../../../firebase/firebase-config'
 import { signIn, hideForms } from '../../../store/authentication'
 import { getShowSignUp } from '../../../store/authentication/selectors'
 import '../forms.css'
+import AuthAlert from '../../AuthAlert/AuthAlert'
+import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
+import { showAlert } from '../../../store/alert'
 
 function SignUpForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const show = useSelector(getShowSignUp)
+  const showAuthAlert = useSelector(getAlertShow)
+  const alertType = useSelector(getAlertType)
   const usernameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement | null>(null)
   const passwordRef = useRef<HTMLInputElement | null>(null)
@@ -31,11 +36,15 @@ function SignUpForm() {
 
   const handleEmailSignUp = async () => {
     if (passwordRef.current!.value !== confirmPasswordRef.current!.value) {
-      console.log('Passwords do not match')
+      dispatch(
+        showAlert({ type: 'sign up', message: 'Passwords do not match' })
+      )
       return
     }
     if (usernameRef.current!.value.trim() === '') {
-      console.log('Please enter username')
+      dispatch(
+        showAlert({ type: 'sign up', message: 'Please create username' })
+      )
       return
     }
     try {
@@ -48,7 +57,7 @@ function SignUpForm() {
       dispatch(hideForms())
       navigate('/search')
     } catch (error: any) {
-      console.error(error.message)
+      dispatch(showAlert({ type: 'sign up', message: error.message }))
     }
   }
   return (
@@ -115,6 +124,7 @@ function SignUpForm() {
             Sign Up
           </Button>
         </Form>
+        {alertType === 'sign up' && <AuthAlert show={showAuthAlert} />}
       </Container>
     </Modal>
   )

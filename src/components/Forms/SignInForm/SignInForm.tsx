@@ -19,11 +19,16 @@ import {
 import { signIn, hideForms, showSignUp } from '../../../store/authentication'
 import { getShowSignIn } from '../../../store/authentication/selectors'
 import '../forms.css'
+import AuthAlert from '../../AuthAlert/AuthAlert'
+import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
+import { showAlert } from '../../../store/alert'
 
 export default function SignInForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const show = useSelector(getShowSignIn)
+  const showAuthAlert = useSelector(getAlertShow)
+  const alertType = useSelector(getAlertType)
 
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
@@ -41,7 +46,7 @@ export default function SignInForm() {
         navigate('/search')
       }
     } catch (error) {
-      console.error('Sign in failed')
+      dispatch(showAlert({ type: 'sign in', message: 'Google Sign In failed' }))
     }
   }
 
@@ -55,7 +60,7 @@ export default function SignInForm() {
       dispatch(hideForms())
       navigate('/search')
     } catch (error: any) {
-      console.error('Sign in failed')
+      dispatch(showAlert({ type: 'sign in', message: 'Email Sign In failed' }))
     }
   }
 
@@ -113,6 +118,7 @@ export default function SignInForm() {
         >
           <Image src={google} id="google-icon"></Image>Sign in with Google
         </Button>
+        {alertType === 'sign in' && <AuthAlert show={showAuthAlert} />}
       </Container>
     </Modal>
   )
