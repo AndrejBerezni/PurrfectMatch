@@ -33,6 +33,10 @@
   margin-right: 10px;
 }
 
+.auth-form {
+  width: 100%;
+}
+
 .auth-form-label {
   width: 80%;
 }

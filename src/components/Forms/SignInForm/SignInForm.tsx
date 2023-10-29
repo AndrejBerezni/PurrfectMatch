@@ -60,8 +60,8 @@ export default function SignInForm() {
   }
 
   const redirectToSignUp = () => {
-    dispatch(hideForms)
-    dispatch(showSignUp)
+    dispatch(hideForms())
+    dispatch(showSignUp())
   }
 
   return (
@@ -79,10 +79,7 @@ export default function SignInForm() {
       </Modal.Header>
       <CloseButton className="auth-close-btn" onClick={handleClose} />
       <Container className="d-flex flex-column align-items-center">
-        <Form
-          className="my-3 d-flex flex-column align-items-center"
-          style={{ width: '100%' }}
-        >
+        <Form className="my-3 d-flex flex-column align-items-center auth-form">
           <FloatingLabel label="Email" className="my-3 auth-form-label">
             <Form.Control
               as="input"

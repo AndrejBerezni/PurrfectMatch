@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import SignInForm from './components/Forms/SignInForm/SignInForm.tsx'
+import SignUpForm from './components/Forms/SignUpForm/SignUpForm.tsx'
 import Navigation from './components/Navigation/Navigation.tsx'
 import Favorites from './pages/Favorites/Favorites.tsx'
 import Home from './pages/Home/Home.tsx'
@@ -37,6 +38,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <SignInForm />
+      <SignUpForm />
     </>
   )
 }
