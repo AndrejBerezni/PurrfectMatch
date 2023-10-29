@@ -59,7 +59,8 @@ p:hover {
 
 @media (max-width: 992px) {
   body {
-    background-position: right;
+    background-position: 80%;
+    background-size: cover;
   }
 
   :root.dark body {
