@@ -1,0 +1,13 @@
+.pagination {
+  --bs-pagination-color: var(--primary);
+  --bs-pagination-bg: var(--bg-color);
+  --bs-pagination-border-color: var(--primary);
+  --bs-pagination-hover-color: var(--bg-color);
+  --bs-pagination-hover-bg: var(--secondary);
+  --bs-pagination-hover-border-color: var(--secondary);
+  --bs-pagination-focus-color: var(--bg-color);
+  --bs-pagination-focus-bg: var(--primary);
+  --bs-pagination-active-color: var(--bg-color);
+  --bs-pagination-active-bg: var(--primary);
+  --bs-pagination-active-border-color: var(--primary);
+}
