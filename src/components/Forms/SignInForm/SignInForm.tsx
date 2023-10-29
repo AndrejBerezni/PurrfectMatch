@@ -53,7 +53,7 @@ export default function SignInForm() {
       )
       dispatch(signIn(user))
       dispatch(hideForms())
-      navigate('/portfolio')
+      navigate('/search')
     } catch (error: any) {
       console.error('Sign in failed')
     }
