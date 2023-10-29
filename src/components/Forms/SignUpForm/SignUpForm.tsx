@@ -18,6 +18,7 @@ import '../forms.css'
 import AuthAlert from '../../AuthAlert/AuthAlert'
 import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
 import { showAlert } from '../../../store/alert'
+import formatFirebaseError from '../../../firebase/formatFirebaseError'
 
 function SignUpForm() {
   const dispatch = useDispatch()
@@ -57,7 +58,8 @@ function SignUpForm() {
       dispatch(hideForms())
       navigate('/search')
     } catch (error: any) {
-      dispatch(showAlert({ type: 'sign up', message: error.message }))
+      const formattedError = formatFirebaseError(error.message)
+      dispatch(showAlert({ type: 'sign up', message: formattedError }))
     }
   }
   return (

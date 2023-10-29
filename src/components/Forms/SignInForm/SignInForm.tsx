@@ -22,6 +22,7 @@ import '../forms.css'
 import AuthAlert from '../../AuthAlert/AuthAlert'
 import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
 import { showAlert } from '../../../store/alert'
+import formatFirebaseError from '../../../firebase/formatFirebaseError'
 
 export default function SignInForm() {
   const dispatch = useDispatch()
@@ -60,7 +61,8 @@ export default function SignInForm() {
       dispatch(hideForms())
       navigate('/search')
     } catch (error: any) {
-      dispatch(showAlert({ type: 'sign in', message: 'Email Sign In failed' }))
+      const formattedError = formatFirebaseError(error.message)
+      dispatch(showAlert({ type: 'sign in', message: formattedError }))
     }
   }
 
