@@ -1,0 +1,30 @@
+.cat-card-container {
+  backdrop-filter: blur(12px) saturate(100%);
+  -webkit-backdrop-filter: blur(12px) saturate(100%);
+  background-color: var(--nav-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: var(--text-color);
+  font-family: var(--text-font);
+  border-radius: 5px;
+  text-align: start;
+}
+
+.cat-card-container h3 {
+  font-family: var(--head-font);
+  color: var(--primary);
+}
+
+.cat-card-image {
+  border-radius: 5px;
+  border: 2px solid var(--accent);
+  box-shadow: 0px 0px 10px var(--secondary);
+}
+
+.cat-card-image,
+.cat-card-prop {
+  max-width: 100%;
+}
+
+.cat-card-prop-name {
+  color: var(--secondary);
+}

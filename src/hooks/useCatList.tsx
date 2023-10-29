@@ -10,7 +10,6 @@ export default function useCatList() {
       const catsList = await getCatsList()
       setCats(catsList)
     }
-    console.log(cats)
     createCatsList()
   }, [])
 

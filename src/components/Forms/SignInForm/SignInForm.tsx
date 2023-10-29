@@ -21,7 +21,7 @@ import { getShowSignIn } from '../../../store/authentication/selectors'
 import '../forms.css'
 import AuthAlert from '../../AuthAlert/AuthAlert'
 import { getAlertShow, getAlertType } from '../../../store/alert/selectors'
-import { showAlert } from '../../../store/alert'
+import { showAlert, hideAlert } from '../../../store/alert'
 import formatFirebaseError from '../../../firebase/formatFirebaseError'
 
 export default function SignInForm() {
@@ -35,6 +35,7 @@ export default function SignInForm() {
   const passwordRef = useRef<HTMLInputElement>(null)
 
   const handleClose = () => {
+    dispatch(hideAlert())
     dispatch(hideForms())
   }
 
