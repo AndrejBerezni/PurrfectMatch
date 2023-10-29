@@ -1,16 +1,7 @@
-import { useState, useEffect } from 'react'
-import getRandomFact from '../../api/getRandomFact'
+import useRandomFact from '../../hooks/useRandomFact'
 
 export default function Home() {
-  const [randomFact, setRandomFact] = useState<string>('')
-
-  useEffect(() => {
-    const handleRandomFact = async () => {
-      const fact = await getRandomFact()
-      setRandomFact(fact)
-    }
-    handleRandomFact()
-  }, [])
+  const randomFact = useRandomFact()
   return (
     <>
       <h1>Home</h1>
