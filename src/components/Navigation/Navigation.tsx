@@ -33,6 +33,7 @@ export default function Navigation() {
     dispatch(signOut())
     navigate('/')
   }
+
   return (
     <Navbar sticky="top" expand="lg" className="bg-body-tertiary" id="navbar">
       <Container
