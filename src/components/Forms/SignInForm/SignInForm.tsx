@@ -43,8 +43,8 @@ export default function SignInForm() {
     try {
       const user = await signInWithGoogle()
       if (user) {
-        dispatch(signIn(user))
         dispatch(hideForms())
+        dispatch(signIn(user))
         navigate('/search')
       }
     } catch (error) {
@@ -58,8 +58,8 @@ export default function SignInForm() {
         emailRef.current!.value.trim().toLowerCase(), //assert that is not null
         passwordRef.current!.value //assert that is not null
       )
-      dispatch(signIn(user))
       dispatch(hideForms())
+      dispatch(signIn(user))
       navigate('/search')
     } catch (error: any) {
       const formattedError = formatFirebaseError(error.message)

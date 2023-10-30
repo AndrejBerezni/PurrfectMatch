@@ -27,11 +27,14 @@ export default function PetSearch() {
       ))}
       <Row>
         <Col className="d-flex justify-content-center">
-          <ListPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            paginate={paginate}
-          />
+          {/* adding condition below in order not to render pagination before items are ready */}
+          {cats.length > 0 && (
+            <ListPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              paginate={paginate}
+            />
+          )}
         </Col>
       </Row>
     </Container>
