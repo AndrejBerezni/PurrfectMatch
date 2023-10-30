@@ -4,17 +4,15 @@ import { ICat } from '../../compiler/interfaces'
 interface ISearchState {
   fullList: ICat[]
   filteredList: ICat[]
-  characterFilter: string[]
-  specialFilter: string[]
+  filters: string[]
 }
 
 const initialState: ISearchState = {
   fullList: [],
   filteredList: [],
-  characterFilter: [],
-  specialFilter: [],
+  filters: [],
 }
-
+//wrtie apply filter function
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
@@ -22,9 +20,19 @@ export const searchSlice = createSlice({
     setFullList: (state, action) => {
       state.fullList = action.payload
     },
+    applyFilter: (state, action) => {
+      if (state.filters.includes(action.payload)) {
+        state.filters.splice(state.filters.indexOf(action.payload), 1)
+      } else {
+        state.filters.push(action.payload)
+      }
+    },
+    resetFilters: (state) => {
+      state.filters = []
+    },
   },
 })
 
-export const { setFullList } = searchSlice.actions
+export const { setFullList, applyFilter } = searchSlice.actions
 
 export default searchSlice.reducer

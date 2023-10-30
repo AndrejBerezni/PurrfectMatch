@@ -20,13 +20,13 @@ export default function PetSearch() {
   return (
     <Container>
       <Row>
-        <Col xs={12} lg={{ span: 10, offset: 1 }}>
+        <Col xs={12} lg={{ span: 12 }}>
           {cats.length > 0 && <Filter />}
         </Col>
       </Row>
       {currentCats.map((item) => (
         <Row className="my-3" key={item.id}>
-          <Col xs={{ span: 10, offset: 1 }}>
+          <Col xs={{ span: 12 }}>
             <CatCard cat={item} />
           </Col>
         </Row>

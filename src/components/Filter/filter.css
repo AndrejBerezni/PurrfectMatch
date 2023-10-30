@@ -41,4 +41,11 @@
   text-transform: capitalize;
   color: var(--secondary);
   font-weight: bold;
+  text-align: start;
+}
+
+@media (min-width: 425px) {
+  .form-check-label {
+    text-wrap: nowrap;
+  }
 }
