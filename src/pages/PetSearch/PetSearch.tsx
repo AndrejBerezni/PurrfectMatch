@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import CatCard from '../../components/CatCard/CatCard'
-import Filter from '../../components/Filter/Filter'
 import ListPagination from '../../components/ListPagination/ListPagination'
 import useCatList from '../../hooks/useCatList'
+import Filter from '../../components/Filter/Filter'
 
 export default function PetSearch() {
   const cats = useCatList()
@@ -19,9 +19,7 @@ export default function PetSearch() {
 
   return (
     <Container>
-      <Row>
-        <Filter />
-      </Row>
+      <Row>{cats.length > 0 && <Filter />}</Row>
       {currentCats.map((item) => (
         <Row className="my-3" key={item.id}>
           <Col xs={{ span: 10, offset: 1 }}>
@@ -31,13 +29,14 @@ export default function PetSearch() {
       ))}
       <Row>
         <Col className="d-flex justify-content-center">
-          {/* adding condition below in order not to render pagination before items are ready */}
-          {cats.length > 0 && (
+          {cats.length > 0 ? (
             <ListPagination
               currentPage={currentPage}
               totalPages={totalPages}
               paginate={paginate}
             />
+          ) : (
+            <Spinner animation="border" className="spinner" />
           )}
         </Col>
       </Row>

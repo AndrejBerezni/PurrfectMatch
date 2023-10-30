@@ -1,5 +1,6 @@
 import { Button, Container, Row } from 'react-bootstrap'
 import FilterSection from './FilterSection/FilterSection'
+import { useMemo } from 'react'
 import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
 import useCatList from '../../hooks/useCatList'
@@ -9,14 +10,15 @@ export default function Filter() {
   const specialTraits = Object.keys(catSpecialTraits).map(
     (key) => catSpecialTraits[key as keyof typeof catSpecialTraits]
   )
-  //extract all characteristics from cats to create list of filters
   const cats = useCatList()
-  const catCharacteristics = extractCharacteristics(cats)
+  const catCharacteristics = useMemo(() => {
+    return extractCharacteristics(cats)
+  }, [cats])
 
   return (
     <Container className="mt-3">
       <Row>
-        <p>
+        <p className="filter-instructions">
           Search for a perfect companion by applying filters below that suit
           your needs
         </p>
