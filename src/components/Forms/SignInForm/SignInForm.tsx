@@ -104,7 +104,7 @@ export default function SignInForm() {
               placeholder="Password"
             />
           </FloatingLabel>
-          <Button className="auth-btn" onClick={handleEmailSignIn}>
+          <Button className="primary-btn" onClick={handleEmailSignIn}>
             Sign in
           </Button>
         </Form>
@@ -115,10 +115,7 @@ export default function SignInForm() {
           </a>
         </p>
         <p className="my-1">or</p>
-        <Button
-          className="google-auth-btn mb-4 mt-1"
-          onClick={handleGoogleSignIn}
-        >
+        <Button className="primary-btn mb-4 mt-1" onClick={handleGoogleSignIn}>
           <Image src={google} id="google-icon"></Image>Sign in with Google
         </Button>
         {alertType === 'sign in' && <AuthAlert show={showAuthAlert} />}

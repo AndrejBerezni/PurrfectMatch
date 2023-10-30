@@ -52,25 +52,6 @@
   color: var(--accent);
 }
 
-.google-auth-btn,
-.auth-btn {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
-
-:root.dark .google-auth-btn,
-:root.dark .auth-btn {
-  color: var(--bg-color);
-}
-
-.google-auth-btn:hover,
-.google-auth-btn:active,
-.auth-btn:hover,
-.auth-btn:active {
-  background-color: var(--accent);
-  border-color: var(--accent);
-}
-
 input.form-control {
   background-color: var(--bg-color);
   color: var(--text-color);

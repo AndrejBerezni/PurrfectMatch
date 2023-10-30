@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import FilterCheck from '../FilterCheck/FilterCheck'
 
 interface IFilterSectionProps {
@@ -12,10 +12,16 @@ export default function FilterSection({
 }: Readonly<IFilterSectionProps>) {
   return (
     <Container className="filter-section my-1">
-      <h5>{title}</h5>
-      {list.map((item: string) => (
-        <FilterCheck label={item} />
-      ))}
+      <Row>
+        <h5 className="filter-section-title mb-3">{title}</h5>
+      </Row>
+      <Row className="justify-content-between justify-content-md-start">
+        {list.map((item: string) => (
+          <Col xs={5} sm={4} md={2} className="d-flex align-items-start">
+            <FilterCheck label={item} />
+          </Col>
+        ))}
+      </Row>
     </Container>
   )
 }

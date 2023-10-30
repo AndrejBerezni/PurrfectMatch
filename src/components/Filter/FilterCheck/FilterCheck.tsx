@@ -6,6 +6,12 @@ interface IFilterCheckProps {
 
 export default function FilterCheck({ label }: Readonly<IFilterCheckProps>) {
   return (
-    <Form.Check inline label={label} type="checkbox" id={`checkbox-${label}`} />
+    <Form.Check
+      className="mb-3 mb-md-2"
+      inline
+      label={label}
+      type="checkbox"
+      id={`checkbox-${label}`}
+    />
   )
 }

@@ -123,7 +123,7 @@ function SignUpForm() {
               placeholder="Confirm Password"
             />
           </FloatingLabel>
-          <Button className="auth-btn" onClick={handleEmailSignUp}>
+          <Button className="primary-btn" onClick={handleEmailSignUp}>
             Sign Up
           </Button>
         </Form>

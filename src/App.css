@@ -64,6 +64,21 @@ p:hover {
   color: var(--primary);
 }
 
+.primary-btn {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+:root.dark .primary-btn {
+  color: var(--bg-color);
+}
+
+.primary-btn:hover,
+.primary-btn:active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
 @media (max-width: 992px) {
   body {
     background-position: 80%;

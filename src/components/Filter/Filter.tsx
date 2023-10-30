@@ -1,6 +1,6 @@
+import { useMemo } from 'react'
 import { Button, Container, Row } from 'react-bootstrap'
 import FilterSection from './FilterSection/FilterSection'
-import { useMemo } from 'react'
 import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
 import useCatList from '../../hooks/useCatList'
@@ -16,7 +16,7 @@ export default function Filter() {
   }, [cats])
 
   return (
-    <Container className="mt-3">
+    <Container className="mt-3 py-2 filter-container">
       <Row>
         <p className="filter-instructions">
           Search for a perfect companion by applying filters below that suit
@@ -29,7 +29,7 @@ export default function Filter() {
       <Row>
         <FilterSection list={specialTraits} title="Special Traits" />
       </Row>
-      <Button>Reset filters</Button>
+      <Button className="primary-btn">Reset filters</Button>
     </Container>
   )
 }

@@ -1,12 +1,44 @@
-.filter-section {
-  border: 1px solid var(--text-color);
+.filter-container {
+  backdrop-filter: blur(12px) saturate(100%);
+  -webkit-backdrop-filter: blur(12px) saturate(100%);
+  background-color: var(--nav-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: var(--text-color);
+  font-family: var(--text-font);
   border-radius: 5px;
 }
 
-.form-check-input:hover {
-  cursor: pointer;
+.filter-instructions {
+  font-weight: bold;
 }
 
+.filter-section {
+  max-width: 100%;
+}
+
+.filter-section-title {
+  font-family: var(--head-font);
+  color: var(--primary);
+}
+.form-check-input:hover {
+  cursor: pointer;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.form-check-input {
+  background-color: var(--bg-color);
+}
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+:root.dark .form-check-input:checked {
+  background-color: var(--bg-color);
+}
 .form-check-label {
   text-transform: capitalize;
+  color: var(--secondary);
+  font-weight: bold;
 }
