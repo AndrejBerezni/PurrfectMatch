@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import CatCard from '../../components/CatCard/CatCard'
 import Filter from '../../components/Filter/Filter'
 import ListPagination from '../../components/ListPagination/ListPagination'
 import useCatList from '../../hooks/useCatList'
-import { getFilteredList } from '../../store/search/selectors'
+import { getFilteredList, getFilters } from '../../store/search/selectors'
 
 export default function PetSearch() {
   useCatList()
   const cats = useSelector(getFilteredList)
+  const filters = useSelector(getFilters)
 
   //handle pagination
   const itemsPerPage = 5
@@ -20,11 +21,15 @@ export default function PetSearch() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
   const totalPages = Math.ceil(cats.length / itemsPerPage)
 
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [filters])
+
   return (
     <Container>
       <Row>
         <Col xs={12} lg={{ span: 12 }}>
-          {cats.length > 0 && <Filter />}
+          {(cats.length > 0 || filters.length > 0) && <Filter />}
         </Col>
       </Row>
       {currentCats.map((item) => (
@@ -36,15 +41,15 @@ export default function PetSearch() {
       ))}
       <Row>
         <Col className="d-flex justify-content-center">
-          {cats.length > 0 ? (
+          {cats.length === 0 && filters.length === 0 ? (
+            <Spinner animation="border" className="spinner" />
+          ) : cats.length !== 0 ? (
             <ListPagination
               currentPage={currentPage}
               totalPages={totalPages}
               paginate={paginate}
             />
-          ) : (
-            <Spinner animation="border" className="spinner" />
-          )}
+          ) : null}
         </Col>
       </Row>
     </Container>
