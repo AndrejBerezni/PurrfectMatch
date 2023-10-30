@@ -44,6 +44,7 @@ body {
   color: var(--text-color);
   overflow-y: hidden;
   overflow-x: hidden;
+  font-family: var(--text-font);
 }
 
 h1:hover,

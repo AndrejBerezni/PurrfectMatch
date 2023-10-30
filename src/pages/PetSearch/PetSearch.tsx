@@ -49,7 +49,12 @@ export default function PetSearch() {
               totalPages={totalPages}
               paginate={paginate}
             />
-          ) : null}
+          ) : (
+            <h3 className="mt-5">
+              Sorry, no cats match your criteria. Try filtering again or
+              consider removing some filters to find a match.
+            </h3>
+          )}
         </Col>
       </Row>
     </Container>
