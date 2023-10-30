@@ -1,0 +1,12 @@
+.filter-section {
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+}
+
+.form-check-input:hover {
+  cursor: pointer;
+}
+
+.form-check-label {
+  text-transform: capitalize;
+}

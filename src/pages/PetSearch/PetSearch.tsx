@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import CatCard from '../../components/CatCard/CatCard'
+import Filter from '../../components/Filter/Filter'
 import ListPagination from '../../components/ListPagination/ListPagination'
 import useCatList from '../../hooks/useCatList'
 
@@ -18,6 +19,9 @@ export default function PetSearch() {
 
   return (
     <Container>
+      <Row>
+        <Filter />
+      </Row>
       {currentCats.map((item) => (
         <Row className="my-3" key={item.id}>
           <Col xs={{ span: 10, offset: 1 }}>

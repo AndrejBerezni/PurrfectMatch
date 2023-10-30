@@ -1,9 +1,9 @@
-import { ICat } from '../../compiler/interfaces'
 import { Container, Row, Col } from 'react-bootstrap'
 import './catcard.css'
 import BasicInfoSection from './BasicInfoSection/BasicInfoSection'
 import CharacterSection from './CharacterSection/CharacterSection'
 import SpecialTraitsSection from './SpecialTraitsSection/SpecialTraitsSection'
+import { ICat } from '../../compiler/interfaces'
 
 interface ICatCardProps {
   cat: ICat
