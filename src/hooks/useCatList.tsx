@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import getCatsList from '../api/getCatsList'
 import { ICat } from '../compiler/interfaces'
-import { setFullList } from '../store/search'
+import { setFullList, resetFilters } from '../store/search'
 
 export default function useCatList() {
   const dispatch = useDispatch()
@@ -13,6 +13,7 @@ export default function useCatList() {
       const catsList = await getCatsList()
       setCats(catsList)
       dispatch(setFullList(catsList))
+      dispatch(resetFilters())
     }
     createCatsList()
   }, [dispatch])

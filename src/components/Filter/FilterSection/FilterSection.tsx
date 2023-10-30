@@ -17,7 +17,14 @@ export default function FilterSection({
       </Row>
       <Row className="justify-content-between justify-content-md-start">
         {list.map((item: string) => (
-          <Col xs={5} sm={4} md={3} lg={2} className="d-flex align-items-start">
+          <Col
+            xs={5}
+            sm={4}
+            md={3}
+            lg={2}
+            className="d-flex align-items-start"
+            key={`label-${item}`}
+          >
             <FilterCheck label={item} />
           </Col>
         ))}

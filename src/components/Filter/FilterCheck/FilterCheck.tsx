@@ -1,6 +1,6 @@
 import { Form } from 'react-bootstrap'
-import { applyFilter, removeFilter } from '../../../store/search'
 import { useDispatch, useSelector } from 'react-redux'
+import { applyFilter, removeFilter } from '../../../store/search'
 import { getFilters } from '../../../store/search/selectors'
 
 interface IFilterCheckProps {
@@ -24,7 +24,7 @@ export default function FilterCheck({ label }: Readonly<IFilterCheckProps>) {
       label={label}
       type="checkbox"
       id={`checkbox-${label}`}
-      onClick={handleChange}
+      onChange={handleChange}
       checked={filters.includes(label)}
     />
   )

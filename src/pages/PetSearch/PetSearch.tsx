@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import CatCard from '../../components/CatCard/CatCard'
 import Filter from '../../components/Filter/Filter'
 import ListPagination from '../../components/ListPagination/ListPagination'
 import useCatList from '../../hooks/useCatList'
+import { getFilteredList } from '../../store/search/selectors'
 
 export default function PetSearch() {
-  const cats = useCatList()
+  useCatList()
+  const cats = useSelector(getFilteredList)
 
   //handle pagination
   const itemsPerPage = 5

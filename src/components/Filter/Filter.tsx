@@ -4,8 +4,8 @@ import FilterSection from './FilterSection/FilterSection'
 import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
 import useCatList from '../../hooks/useCatList'
-import extractCharacteristics from '../../utilities/extractCatCharacteristics'
 import { resetFilters } from '../../store/search'
+import extractCharacteristics from '../../utilities/extractCatCharacteristics'
 import { useDispatch } from 'react-redux'
 
 export default function Filter() {
