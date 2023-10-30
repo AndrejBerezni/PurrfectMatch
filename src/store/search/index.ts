@@ -21,10 +21,13 @@ export const searchSlice = createSlice({
       state.fullList = action.payload
     },
     applyFilter: (state, action) => {
+      if (!state.filters.includes(action.payload)) {
+        state.filters.push(action.payload)
+      }
+    },
+    removeFilter: (state, action) => {
       if (state.filters.includes(action.payload)) {
         state.filters.splice(state.filters.indexOf(action.payload), 1)
-      } else {
-        state.filters.push(action.payload)
       }
     },
     resetFilters: (state) => {
@@ -33,6 +36,7 @@ export const searchSlice = createSlice({
   },
 })
 
-export const { setFullList, applyFilter } = searchSlice.actions
+export const { setFullList, applyFilter, removeFilter, resetFilters } =
+  searchSlice.actions
 
 export default searchSlice.reducer

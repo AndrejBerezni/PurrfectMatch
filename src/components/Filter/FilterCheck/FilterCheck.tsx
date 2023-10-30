@@ -1,6 +1,7 @@
 import { Form } from 'react-bootstrap'
-import { applyFilter } from '../../../store/search'
-import { useDispatch } from 'react-redux'
+import { applyFilter, removeFilter } from '../../../store/search'
+import { useDispatch, useSelector } from 'react-redux'
+import { getFilters } from '../../../store/search/selectors'
 
 interface IFilterCheckProps {
   label: string
@@ -8,9 +9,12 @@ interface IFilterCheckProps {
 
 export default function FilterCheck({ label }: Readonly<IFilterCheckProps>) {
   const dispatch = useDispatch()
+  const filters: string[] = useSelector(getFilters)
 
   const handleChange = () => {
-    dispatch(applyFilter(label))
+    filters.includes(label)
+      ? dispatch(removeFilter(label))
+      : dispatch(applyFilter(label))
   }
 
   return (
@@ -20,7 +24,8 @@ export default function FilterCheck({ label }: Readonly<IFilterCheckProps>) {
       label={label}
       type="checkbox"
       id={`checkbox-${label}`}
-      onChange={handleChange}
+      onClick={handleChange}
+      checked={filters.includes(label)}
     />
   )
 }

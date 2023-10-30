@@ -5,8 +5,12 @@ import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
 import useCatList from '../../hooks/useCatList'
 import extractCharacteristics from '../../utilities/extractCatCharacteristics'
+import { resetFilters } from '../../store/search'
+import { useDispatch } from 'react-redux'
 
 export default function Filter() {
+  const dispatch = useDispatch()
+
   const specialTraits = Object.keys(catSpecialTraits).map(
     (key) => catSpecialTraits[key as keyof typeof catSpecialTraits]
   )
@@ -14,6 +18,10 @@ export default function Filter() {
   const catCharacteristics = useMemo(() => {
     return extractCharacteristics(cats)
   }, [cats])
+
+  const handleFilterReset = () => {
+    dispatch(resetFilters())
+  }
 
   return (
     <Container className="mt-3 py-2 filter-container">
@@ -29,7 +37,9 @@ export default function Filter() {
       <Row>
         <FilterSection list={specialTraits} title="Special Traits" />
       </Row>
-      <Button className="primary-btn">Reset filters</Button>
+      <Button className="primary-btn" onClick={handleFilterReset}>
+        Reset filters
+      </Button>
     </Container>
   )
 }
