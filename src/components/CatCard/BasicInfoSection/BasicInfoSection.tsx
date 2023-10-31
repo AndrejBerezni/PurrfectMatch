@@ -1,4 +1,5 @@
 import { ICat } from '../../../compiler/interfaces'
+import { Col } from 'react-bootstrap'
 
 interface IBasicInfoSectionProps {
   cat: ICat
@@ -8,7 +9,7 @@ export default function BasicInfoSection({
   cat,
 }: Readonly<IBasicInfoSectionProps>) {
   return (
-    <>
+    <Col md={6} className="align-items-start">
       <h3 className="cat-card-name mb-4 mt-2">{cat.name}</h3>
       <h5>
         <span className="cat-card-prop-name">Origin: </span>
@@ -23,6 +24,6 @@ export default function BasicInfoSection({
         {cat.life_span} years
       </h5>
       <h5 className="cat-card-props">{cat.temperament}</h5>
-    </>
+    </Col>
   )
 }

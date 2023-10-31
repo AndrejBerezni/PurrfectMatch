@@ -10,15 +10,17 @@ export default function CatCardButtons({
 }: Readonly<ICatCardButtonsProps>) {
   return (
     <Container className="d-flex justify-content-end gap-3">
-      <Button className="align-self-end primary-btn">
-        <a
-          href={cat.vetstreet_url}
-          target="_blank"
-          style={{ color: 'var(--bg-color)' }}
-        >
-          <InfoCircleFill />
-        </a>
-      </Button>
+      {cat.vetstreet_url && (
+        <Button className="align-self-end primary-btn">
+          <a
+            href={cat.vetstreet_url}
+            target="_blank"
+            style={{ color: 'var(--bg-color)' }}
+          >
+            <InfoCircleFill />
+          </a>
+        </Button>
+      )}
       <Button className="align-self-end primary-btn">
         <a
           href={cat.wikipedia_url}

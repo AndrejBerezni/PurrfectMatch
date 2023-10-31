@@ -25,16 +25,12 @@ export default function CatCard({ cat }: Readonly<ICatCardProps>) {
                 />
               </Col>
             )}
-            <Col md={6} className="align-items-start">
-              <BasicInfoSection cat={cat} />
-            </Col>
+            <BasicInfoSection cat={cat} />
           </Row>
           <Row className="mt-4 p-2">
             <p className="cat-card-description">{cat.description}</p>
           </Row>
-          <Row className="mb-3">
-            <SpecialTraitsSection cat={cat} />
-          </Row>
+          <SpecialTraitsSection cat={cat} />
         </Col>
         <Col md={4} className="d-flex flex-md-column flex-column-reverse">
           <CatCardButtons cat={cat} />
