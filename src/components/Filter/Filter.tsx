@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Button, Container, Row } from 'react-bootstrap'
+import { Button, Container, Row, Spinner } from 'react-bootstrap'
 import FilterSection from './FilterSection/FilterSection'
 import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
@@ -31,15 +31,21 @@ export default function Filter() {
           your needs
         </p>
       </Row>
-      <Row>
-        <FilterSection list={catCharacteristics} title="Character" />
-      </Row>
-      <Row>
-        <FilterSection list={specialTraits} title="Special Traits" />
-      </Row>
-      <Button className="primary-btn" onClick={handleFilterReset}>
-        Reset filters
-      </Button>
+      {catCharacteristics.length === 0 ? (
+        <Spinner className="spinner" />
+      ) : (
+        <>
+          <Row>
+            <FilterSection list={catCharacteristics} title="Character" />
+          </Row>
+          <Row>
+            <FilterSection list={specialTraits} title="Special Traits" />
+          </Row>
+          <Button className="primary-btn" onClick={handleFilterReset}>
+            Reset filters
+          </Button>
+        </>
+      )}
     </Container>
   )
 }

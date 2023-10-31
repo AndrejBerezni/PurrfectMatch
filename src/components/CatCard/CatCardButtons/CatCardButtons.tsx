@@ -35,7 +35,7 @@ export default function CatCardButtons({
   }
 
   return (
-    <Container className="d-flex justify-content-end gap-3">
+    <Container className="d-flex justify-content-end gap-3 mb-md-3">
       {cat.vetstreet_url && (
         <Button className="align-self-end primary-btn">
           <a
