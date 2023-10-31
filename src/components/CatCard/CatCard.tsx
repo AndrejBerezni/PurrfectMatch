@@ -3,6 +3,7 @@ import './catcard.css'
 import BasicInfoSection from './BasicInfoSection/BasicInfoSection'
 import CharacterSection from './CharacterSection/CharacterSection'
 import SpecialTraitsSection from './SpecialTraitsSection/SpecialTraitsSection'
+import CatCardButtons from './CatCardButtons/CatCardButtons'
 import { ICat } from '../../compiler/interfaces'
 
 interface ICatCardProps {
@@ -35,7 +36,8 @@ export default function CatCard({ cat }: Readonly<ICatCardProps>) {
             <SpecialTraitsSection cat={cat} />
           </Row>
         </Col>
-        <Col md={4}>
+        <Col md={4} className="d-flex flex-md-column flex-column-reverse">
+          <CatCardButtons cat={cat} />
           <CharacterSection cat={cat} />
         </Col>
       </Row>
