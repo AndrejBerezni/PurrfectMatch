@@ -1,5 +1,5 @@
-import { ICat } from '../../../compiler/interfaces'
 import { Col } from 'react-bootstrap'
+import { ICat } from '../../../compiler/interfaces'
 
 interface IBasicInfoSectionProps {
   cat: ICat

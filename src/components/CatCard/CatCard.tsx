@@ -1,16 +1,17 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import './catcard.css'
 import BasicInfoSection from './BasicInfoSection/BasicInfoSection'
+import CatCardButtons from './CatCardButtons/CatCardButtons'
 import CharacterSection from './CharacterSection/CharacterSection'
 import SpecialTraitsSection from './SpecialTraitsSection/SpecialTraitsSection'
-import CatCardButtons from './CatCardButtons/CatCardButtons'
 import { ICat } from '../../compiler/interfaces'
 
 interface ICatCardProps {
   cat: ICat
+  isFavorite: boolean
 }
 
-export default function CatCard({ cat }: Readonly<ICatCardProps>) {
+export default function CatCard({ cat, isFavorite }: Readonly<ICatCardProps>) {
   return (
     <Container className="p-3 cat-card-container">
       <Row>
@@ -33,7 +34,7 @@ export default function CatCard({ cat }: Readonly<ICatCardProps>) {
           <SpecialTraitsSection cat={cat} />
         </Col>
         <Col md={4} className="d-flex flex-md-column flex-column-reverse">
-          <CatCardButtons cat={cat} />
+          <CatCardButtons cat={cat} isFavorite={isFavorite} />
           <CharacterSection cat={cat} />
         </Col>
       </Row>

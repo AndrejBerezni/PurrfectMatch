@@ -11,12 +11,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import './navigation.css'
+import NavItem from './NavItem/NavItem'
 import { signOutUser } from '../../firebase/firebase-config'
 import { showSignIn, signOut } from '../../store/authentication'
 import { getAuthStatus } from '../../store/authentication/selectors'
 import { switchDarkMode } from '../../store/darkMode'
 import { getDarkMode } from '../../store/darkMode/selectors'
-import NavItem from './NavItem/NavItem'
 
 export default function Navigation() {
   const dispatch = useDispatch()

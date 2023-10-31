@@ -5,12 +5,14 @@ import CatCard from '../../components/CatCard/CatCard'
 import Filter from '../../components/Filter/Filter'
 import ListPagination from '../../components/ListPagination/ListPagination'
 import useCatList from '../../hooks/useCatList'
+import useFavorites from '../../hooks/useFavorites'
 import { getFilteredList, getFilters } from '../../store/search/selectors'
 
 export default function PetSearch() {
   useCatList()
   const cats = useSelector(getFilteredList)
   const filters = useSelector(getFilters)
+  const favorites = useFavorites()
 
   //handle pagination
   const itemsPerPage = 5
@@ -35,7 +37,10 @@ export default function PetSearch() {
       {currentCats.map((item) => (
         <Row className="my-3" key={item.id}>
           <Col xs={{ span: 12 }}>
-            <CatCard cat={item} />
+            <CatCard
+              cat={item}
+              isFavorite={favorites.some((fav) => fav.name === item.name)}
+            />
           </Col>
         </Row>
       ))}

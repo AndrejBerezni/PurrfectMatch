@@ -1,13 +1,39 @@
 import { Container, Button } from 'react-bootstrap'
-import { HeartFill, Wikipedia, InfoCircleFill } from 'react-bootstrap-icons'
+import {
+  Heart,
+  HeartFill,
+  Wikipedia,
+  InfoCircleFill,
+} from 'react-bootstrap-icons'
+import { useSelector } from 'react-redux'
 import { ICat } from '../../../compiler/interfaces'
+import {
+  addCatToFavorites,
+  removeCatFromFavorites,
+} from '../../../firebase/firebase-config'
+import { getUser } from '../../../store/authentication/selectors'
 
 interface ICatCardButtonsProps {
   cat: ICat
+  isFavorite: boolean
 }
 export default function CatCardButtons({
   cat,
+  isFavorite,
 }: Readonly<ICatCardButtonsProps>) {
+  const user = useSelector(getUser)
+
+  const handleAdd = async () => {
+    if (user) {
+      await addCatToFavorites(user, cat)
+    }
+  }
+  const handleRemove = async () => {
+    if (user) {
+      await removeCatFromFavorites(user, cat)
+    }
+  }
+
   return (
     <Container className="d-flex justify-content-end gap-3">
       {cat.vetstreet_url && (
@@ -30,9 +56,15 @@ export default function CatCardButtons({
           <Wikipedia />
         </a>
       </Button>
-      <Button className="align-self-end primary-btn">
-        <HeartFill />
-      </Button>
+      {isFavorite ? (
+        <Button className="align-self-end primary-btn" onClick={handleRemove}>
+          <HeartFill />
+        </Button>
+      ) : (
+        <Button className="align-self-end primary-btn" onClick={handleAdd}>
+          <Heart />
+        </Button>
+      )}
     </Container>
   )
 }

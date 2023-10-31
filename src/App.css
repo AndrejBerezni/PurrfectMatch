@@ -58,6 +58,10 @@ p:hover {
   cursor: default;
 }
 
+h3 {
+  font-family: var(--head-font);
+}
+
 .spinner {
   position: absolute;
   top: 50%;
