@@ -7,7 +7,16 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth'
-import { getFirestore, getDoc, setDoc, doc } from 'firebase/firestore'
+import {
+  getFirestore,
+  getDoc,
+  setDoc,
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from 'firebase/firestore'
+import { ICat } from '../compiler/interfaces'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API,
@@ -87,6 +96,31 @@ const signOutUser = () => {
   signOut(getAuth())
 }
 
+//Get favorites
+const getFavoriteCats = async (user: string) => {
+  const userRef = doc(db, 'users', user)
+  const userSnapshot = await getDoc(userRef)
+  return userSnapshot
+    .data()!
+    .favorites.sort((a: ICat, b: ICat) =>
+      a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+    )
+}
+//Add cat to favorites
+const addCatToFavorites = async (user: string, cat: ICat) => {
+  const userRef = doc(db, 'users', user)
+  await updateDoc(userRef, {
+    favorites: arrayUnion(cat),
+  })
+}
+
+//Remove cat from favorites
+const removeCatFromFavorites = async (user: string, cat: ICat) => {
+  const userRef = doc(db, 'users', user)
+  await updateDoc(userRef, {
+    favorites: arrayRemove(cat),
+  })
+}
 export {
   createUserDocument,
   checkIfUserDocExists,
@@ -94,4 +128,7 @@ export {
   signUpWithEmail,
   signOutUser,
   signInWithGoogle,
+  getFavoriteCats,
+  addCatToFavorites,
+  removeCatFromFavorites,
 }

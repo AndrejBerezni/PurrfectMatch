@@ -14,8 +14,11 @@
 .navbar-brand {
   color: var(--text-color);
   text-decoration: none;
-  font-family: var(--head-font);
   font-size: large;
+}
+
+.navbar-brand {
+  font-family: var(--head-font);
 }
 
 .nav-item {
@@ -24,6 +27,7 @@
   align-items: center;
   gap: 5px;
   font-size: x-large;
+  font-family: var(--text-font);
 }
 
 :root.dark .nav-item {
