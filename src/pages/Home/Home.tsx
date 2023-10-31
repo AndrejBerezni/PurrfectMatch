@@ -1,11 +1,13 @@
 import useRandomFact from '../../hooks/useRandomFact'
+import { Container } from 'react-bootstrap'
+import HeroSection from '../../components/HeroSection/HeroSection'
 
 export default function Home() {
   const randomFact = useRandomFact()
   return (
-    <>
-      <h1>Home</h1>
+    <Container>
+      <HeroSection />
       <p>{randomFact}</p>
-    </>
+    </Container>
   )
 }
