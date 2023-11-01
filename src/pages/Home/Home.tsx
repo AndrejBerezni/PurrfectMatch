@@ -1,16 +1,15 @@
-import useRandomFact from '../../hooks/useRandomFact'
 import { Container, Row } from 'react-bootstrap'
 import HeroSection from '../../components/HeroSection/HeroSection'
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel'
+import RandomFactSection from '../../components/RandomFactSection/RandomFactSection'
 
 export default function Home() {
-  const randomFact = useRandomFact()
   return (
     <Container>
       <HeroSection />
-      <Row>
+      <Row className="justify-content-between">
         <ImageCarousel />
-        <p>{randomFact}</p>
+        <RandomFactSection />
       </Row>
     </Container>
   )

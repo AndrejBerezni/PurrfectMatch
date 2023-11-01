@@ -5,11 +5,14 @@ export default function useRandomFact() {
   const [randomFact, setRandomFact] = useState<string>('')
 
   useEffect(() => {
-    const handleRandomFact = async () => {
+    const fetchRandomFact = async () => {
       const fact = await getRandomFact()
       setRandomFact(fact)
     }
-    handleRandomFact()
+    fetchRandomFact()
+    const fetchInterval = setInterval(fetchRandomFact, 5000) // Fetch and display random fact every 5 seconds
+    // Clear the interval when the component unmounts
+    return () => clearInterval(fetchInterval)
   }, [])
 
   return randomFact
