@@ -13,24 +13,28 @@ export default function ListPagination({
   paginate,
 }: Readonly<IListPaginationProps>) {
   return (
-    <Pagination>
-      <Pagination.First onClick={() => paginate(1)} />
-      <Pagination.Prev
-        onClick={() => {
-          if (currentPage > 1) {
-            paginate(currentPage - 1)
-          }
-        }}
-      />
-      <Pagination.Item active>{currentPage}</Pagination.Item>
-      <Pagination.Next
-        onClick={() => {
-          if (currentPage < totalPages) {
-            paginate(currentPage + 1)
-          }
-        }}
-      />
-      <Pagination.Last onClick={() => paginate(totalPages)} />
-    </Pagination>
+    <>
+      {totalPages > 1 && (
+        <Pagination>
+          <Pagination.First onClick={() => paginate(1)} />
+          <Pagination.Prev
+            onClick={() => {
+              if (currentPage > 1) {
+                paginate(currentPage - 1)
+              }
+            }}
+          />
+          <Pagination.Item active>{currentPage}</Pagination.Item>
+          <Pagination.Next
+            onClick={() => {
+              if (currentPage < totalPages) {
+                paginate(currentPage + 1)
+              }
+            }}
+          />
+          <Pagination.Last onClick={() => paginate(totalPages)} />
+        </Pagination>
+      )}
+    </>
   )
 }
