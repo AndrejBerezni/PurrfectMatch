@@ -3,7 +3,7 @@ interface ICatWeight {
   metric: string
 }
 
-interface ICatImage {
+export interface ICatImage {
   id: string
   width: number
   height: number
