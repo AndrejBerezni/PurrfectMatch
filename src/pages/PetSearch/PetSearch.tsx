@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import CatCard from '../../components/CatCard/CatCard'
@@ -6,6 +6,7 @@ import Filter from '../../components/Filter/Filter'
 import ListPagination from '../../components/ListPagination/ListPagination'
 import useCatList from '../../hooks/useCatList'
 import useFavorites from '../../hooks/useFavorites'
+import { usePagination } from '../../hooks/usePagination'
 import { getFilteredList, getFilters } from '../../store/search/selectors'
 
 export default function PetSearch() {
@@ -13,15 +14,8 @@ export default function PetSearch() {
   const cats = useSelector(getFilteredList)
   const filters = useSelector(getFilters)
   const favorites = useFavorites()
-
-  //handle pagination
-  const itemsPerPage = 5
-  const [currentPage, setCurrentPage] = useState(1)
-  const indexOfLastCat = currentPage * itemsPerPage
-  const indexOfFirstCat = indexOfLastCat - itemsPerPage
-  const currentCats = cats.slice(indexOfFirstCat, indexOfLastCat)
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
-  const totalPages = Math.ceil(cats.length / itemsPerPage)
+  const { currentPage, setCurrentPage, currentItems, totalPages, paginate } =
+    usePagination(cats, 5)
 
   useEffect(() => {
     setCurrentPage(1)
@@ -34,7 +28,7 @@ export default function PetSearch() {
           {(cats.length > 0 || filters.length > 0) && <Filter />}
         </Col>
       </Row>
-      {currentCats.map((item) => (
+      {currentItems.map((item) => (
         <Row className="my-3" key={item.id}>
           <Col xs={{ span: 12 }}>
             <CatCard
