@@ -31,22 +31,29 @@ html {
 #root {
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0;
   text-align: center;
   overflow-y: scroll;
+}
+
+.background-image {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  position: fixed;
 }
 
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background: var(--bg-image);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   color: var(--text-color);
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
   font-family: var(--text-font);
 }

@@ -24,6 +24,7 @@ function App() {
 
   return (
     <>
+      <div className="background-image"></div>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
