@@ -1,16 +1,28 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import alertReducer from './alert/index.ts'
 import authReducer from './authentication/index.ts'
 import darkModeReducer from './darkMode/index.ts'
 import searchReducer from './search/index.ts'
 
-export const store = configureStore({
-  reducer: {
-    authentication: authReducer,
-    darkMode: darkModeReducer,
-    alert: alertReducer,
-    search: searchReducer,
+const reducers = combineReducers({
+  authentication: authReducer,
+  darkMode: darkModeReducer,
+  alert: alertReducer,
+  search: searchReducer,
+})
+
+const persistedReducer = persistReducer(
+  {
+    key: 'root',
+    storage,
   },
+  reducers
+)
+
+export const store = configureStore({
+  reducer: persistedReducer,
   devTools: true,
 })
 

@@ -1,5 +1,5 @@
-import useRandomFact from '../../hooks/useRandomFact'
 import { Col } from 'react-bootstrap'
+import useRandomFact from '../../hooks/useRandomFact'
 import './randomfactsection.css'
 
 export default function RandomFactSection() {

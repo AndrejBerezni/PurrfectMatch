@@ -1,7 +1,7 @@
+import { Row, Col } from 'react-bootstrap'
 import CharacterBar from './CharacterBar/CharacterBar'
 import { ICat } from '../../../compiler/interfaces'
 import { catCharacteristics } from '../../../data/catCharacteristics'
-import { Row, Col } from 'react-bootstrap'
 
 interface ICharacterSectionProps {
   cat: ICat

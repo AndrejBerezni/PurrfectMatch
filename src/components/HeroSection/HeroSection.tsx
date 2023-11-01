@@ -1,9 +1,9 @@
 import './herosection.css'
 import { Row, Col, Button } from 'react-bootstrap'
-import { getAuthStatus } from '../../store/authentication/selectors'
-import { showSignIn } from '../../store/authentication'
-import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
+import { showSignIn } from '../../store/authentication'
+import { getAuthStatus } from '../../store/authentication/selectors'
 
 export default function HeroSection() {
   const navigate = useNavigate()

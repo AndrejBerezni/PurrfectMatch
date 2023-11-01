@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { Button, Container, Row, Spinner } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import FilterSection from './FilterSection/FilterSection'
 import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
 import useCatList from '../../hooks/useCatList'
 import { resetFilters } from '../../store/search'
 import extractCharacteristics from '../../utilities/extractCatCharacteristics'
-import { useDispatch } from 'react-redux'
 
 export default function Filter() {
   const dispatch = useDispatch()
