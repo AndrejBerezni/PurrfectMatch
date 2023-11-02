@@ -8,3 +8,6 @@ export const getFilteredList = (store: RootState) =>
   get(store, 'search.filteredList', [])
 
 export const getFilters = (store: RootState) => get(store, 'search.filters', [])
+
+export const getAvailableCharacteristics = (store: RootState) =>
+  get(store, 'search.availableCharacteristics', [])

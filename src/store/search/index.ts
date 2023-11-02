@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ICat } from '../../compiler/interfaces'
 import { applyFilterToList } from '../../utilities/applyFilterToList'
+import extractCharacteristics from '../../utilities/extractCatCharacteristics'
 
 interface ISearchState {
   fullList: ICat[]
   filteredList: ICat[]
   filters: string[]
+  availableCharacteristics: string[]
 }
 
 const initialState: ISearchState = {
   fullList: [],
   filteredList: [],
   filters: [],
+  availableCharacteristics: [],
 }
 
 export const searchSlice = createSlice({
@@ -25,6 +28,9 @@ export const searchSlice = createSlice({
       if (!state.filters.includes(action.payload)) {
         state.filters.push(action.payload)
         state.filteredList = applyFilterToList(state.fullList, state.filters)
+        state.availableCharacteristics = extractCharacteristics(
+          state.filteredList
+        )
       }
     },
     removeFilter: (state, action) => {
@@ -34,16 +40,28 @@ export const searchSlice = createSlice({
           state.filters.length === 0
             ? state.fullList
             : applyFilterToList(state.fullList, state.filters)
+        state.availableCharacteristics = extractCharacteristics(
+          state.filteredList
+        )
       }
     },
     resetFilters: (state) => {
       state.filters = []
       state.filteredList = state.fullList
+      state.availableCharacteristics = extractCharacteristics(state.fullList)
+    },
+    resetCharacteristics: (state) => {
+      state.availableCharacteristics = extractCharacteristics(state.fullList)
     },
   },
 })
 
-export const { setFullList, applyFilter, removeFilter, resetFilters } =
-  searchSlice.actions
+export const {
+  setFullList,
+  applyFilter,
+  removeFilter,
+  resetFilters,
+  resetCharacteristics,
+} = searchSlice.actions
 
 export default searchSlice.reducer

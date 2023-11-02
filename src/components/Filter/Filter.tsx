@@ -1,26 +1,27 @@
-import { useMemo } from 'react'
 import { Button, Container, Row, Spinner } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import FilterSection from './FilterSection/FilterSection'
 import './filter.css'
 import { catSpecialTraits } from '../../data/catSpecialTraits'
-import useCatList from '../../hooks/useCatList'
-import { resetFilters } from '../../store/search'
-import extractCharacteristics from '../../utilities/extractCatCharacteristics'
+import { resetFilters, resetCharacteristics } from '../../store/search'
+import {
+  getAvailableCharacteristics,
+  getFilteredList,
+} from '../../store/search/selectors'
 
 export default function Filter() {
   const dispatch = useDispatch()
+  const catList = useSelector(getFilteredList)
 
   const specialTraits = Object.keys(catSpecialTraits).map(
     (key) => catSpecialTraits[key as keyof typeof catSpecialTraits]
   )
-  const cats = useCatList()
-  const catCharacteristics = useMemo(() => {
-    return extractCharacteristics(cats)
-  }, [cats])
+
+  const catCharacteristics = useSelector(getAvailableCharacteristics)
 
   const handleFilterReset = () => {
     dispatch(resetFilters())
+    dispatch(resetCharacteristics())
   }
 
   return (
@@ -31,7 +32,7 @@ export default function Filter() {
           your needs
         </p>
       </Row>
-      {catCharacteristics.length === 0 ? (
+      {catCharacteristics.length === 0 && catList.length !== 0 ? (
         <Spinner className="spinner" />
       ) : (
         <>
