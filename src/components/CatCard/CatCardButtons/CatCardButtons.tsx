@@ -12,6 +12,7 @@ import {
   removeCatFromFavorites,
 } from '../../../firebase/firebase-config'
 import { getUser } from '../../../store/authentication/selectors'
+import { useState } from 'react'
 
 interface ICatCardButtonsProps {
   cat: ICat
@@ -22,15 +23,18 @@ export default function CatCardButtons({
   isFavorite,
 }: Readonly<ICatCardButtonsProps>) {
   const user = useSelector(getUser)
+  const [localFav, setLocalFav] = useState<boolean | undefined>(isFavorite)
 
   const handleAdd = async () => {
     if (user) {
       await addCatToFavorites(user, cat)
+      setLocalFav(true)
     }
   }
   const handleRemove = async () => {
     if (user) {
       await removeCatFromFavorites(user, cat)
+      setLocalFav(false)
     }
   }
 
@@ -56,7 +60,7 @@ export default function CatCardButtons({
           <Wikipedia />
         </a>
       </Button>
-      {isFavorite ? (
+      {localFav ? (
         <Button className="align-self-end primary-btn" onClick={handleRemove}>
           <HeartFill />
         </Button>
