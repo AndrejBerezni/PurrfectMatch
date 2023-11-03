@@ -5,7 +5,7 @@ export const getAuthStatus = (store: RootState) =>
   get(store, 'authentication.isAuth', false)
 
 export const getUser = (store: RootState) =>
-  get(store, 'authentication.user', false)
+  get(store, 'authentication.user', '')
 
 export const getShowSignIn = (store: RootState) =>
   get(store, 'authentication.showSignIn', false)

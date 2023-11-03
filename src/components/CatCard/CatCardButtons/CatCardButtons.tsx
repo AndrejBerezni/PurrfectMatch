@@ -15,7 +15,7 @@ import { getUser } from '../../../store/authentication/selectors'
 
 interface ICatCardButtonsProps {
   cat: ICat
-  isFavorite: boolean
+  isFavorite: boolean | undefined
 }
 export default function CatCardButtons({
   cat,

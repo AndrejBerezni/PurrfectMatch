@@ -5,7 +5,7 @@ import { getFavoriteCats } from '../firebase/firebase-config'
 import { getUser } from '../store/authentication/selectors'
 
 export default function useFavorites() {
-  const [favorites, setFavorites] = useState<ICat[]>([])
+  const [favorites, setFavorites] = useState<ICat[] | null>(null)
   const user = useSelector(getUser)
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function useFavorites() {
       }
     }
     fetchFavoriteCats()
-  })
+  }, [])
 
   return favorites
 }

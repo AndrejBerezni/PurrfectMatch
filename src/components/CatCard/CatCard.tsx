@@ -9,7 +9,7 @@ import CatCardAnimationOnScroll from '../animation/CatCardAnimationOnScroll'
 
 interface ICatCardProps {
   cat: ICat
-  isFavorite: boolean
+  isFavorite: boolean | undefined
 }
 
 export default function CatCard({ cat, isFavorite }: Readonly<ICatCardProps>) {

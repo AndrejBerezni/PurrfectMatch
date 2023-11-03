@@ -33,7 +33,7 @@ export default function PetSearch() {
           <Col xs={{ span: 12 }}>
             <CatCard
               cat={item}
-              isFavorite={favorites.some((fav) => fav.name === item.name)}
+              isFavorite={favorites?.some((fav) => fav.name === item.name)}
             />
           </Col>
         </Row>
