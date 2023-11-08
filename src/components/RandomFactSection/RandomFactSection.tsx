@@ -3,7 +3,7 @@ import useRandomFact from '../../hooks/useRandomFact'
 import './randomfactsection.css'
 
 export default function RandomFactSection() {
-  const randomFact = useRandomFact()
+  const randomFact: string = useRandomFact()
   return (
     <Col
       md={5}

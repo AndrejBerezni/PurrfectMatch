@@ -19,7 +19,7 @@ export default function PetSearch() {
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [filters])
+  }, [filters, setCurrentPage])
 
   return (
     <Container>

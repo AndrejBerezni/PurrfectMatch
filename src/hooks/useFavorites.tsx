@@ -5,7 +5,7 @@ import { getFavoriteCats } from '../firebase/firebase-config'
 import { getUser } from '../store/authentication/selectors'
 
 export default function useFavorites() {
-  const [favorites, setFavorites] = useState<ICat[] | null>(null)
+  const [favorites, setFavorites] = useState<ICat[] | null>(null) // not using assertion ([] as ICat[]) because that way spinner won't be shown while loading cats (check Favorites page)
   const user = useSelector(getUser)
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function useFavorites() {
       }
     }
     fetchFavoriteCats()
-  }, [])
+  }, [user])
 
   return favorites
 }

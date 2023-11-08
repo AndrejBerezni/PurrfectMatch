@@ -34,7 +34,7 @@ html {
   min-height: 100vh;
   padding: 0;
   text-align: center;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .background-image {

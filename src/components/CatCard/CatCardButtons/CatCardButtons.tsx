@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import {
   Heart,
@@ -12,7 +13,6 @@ import {
   removeCatFromFavorites,
 } from '../../../firebase/firebase-config'
 import { getUser } from '../../../store/authentication/selectors'
-import { useState } from 'react'
 
 interface ICatCardButtonsProps {
   cat: ICat
